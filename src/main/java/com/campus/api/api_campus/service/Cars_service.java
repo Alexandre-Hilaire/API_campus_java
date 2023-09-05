@@ -2,7 +2,6 @@ package com.campus.api.api_campus.service;
 import com.campus.api.api_campus.api.model.Cars;
 import com.campus.api.api_campus.repository.Cars_repository;
 import jakarta.persistence.Id;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.events.Event;
@@ -10,7 +9,6 @@ import org.yaml.snakeyaml.events.Event;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Optional;
-@Data
 @Service
 public class Cars_service {
 

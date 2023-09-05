@@ -16,6 +16,8 @@ public class Cars_controller {
     private final List<Cars> carsList = new ArrayList<>();
     public Cars_controller(){
         carsList.add(new Cars(0, "Alpine", "Renault", "Blue"));
+        carsList.add(new Cars(1, "Escort", "Ford", "White"));
+        carsList.add(new Cars(2, "131 Abarth", "Fiat", "Black"));
     }
 
     @Autowired
