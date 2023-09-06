@@ -1,6 +1,8 @@
 package com.campus.api.api_campus.controller;
 
 import com.campus.api.api_campus.api.model.Cars;
+import com.campus.api.api_campus.repository.CarsList_repository;
+import com.campus.api.api_campus.repository.Cars_repository;
 import com.campus.api.api_campus.service.Cars_service;
 import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +15,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("cars")
 public class Cars_controller {
-    private final List<Cars> carsList = new ArrayList<>();
-    public Cars_controller(){
-        carsList.add(new Cars(0, "Alpine", "Renault", "Blue"));
-        carsList.add(new Cars(1, "Escort", "Ford", "White"));
-        carsList.add(new Cars(2, "131 Abarth", "Fiat", "Black"));
-    }
 
     @Autowired
     private Cars_service cars_service;
+    @Autowired
+    private CarsList_repository carsList_repository;
 //    @GetMapping("/cars")
 //    public Iterable<Cars>getCars(){
 //        return cars_service.getCars();
@@ -64,7 +62,7 @@ public class Cars_controller {
 //    }
     @GetMapping
     public List<Cars> getCars(){
-        return carsList;
+        return carsList_repository.CarsList_repository;
     }
     @GetMapping("/{id}")
     public Cars getCarById(@PathVariable("id") Long id){
@@ -92,6 +90,6 @@ public class Cars_controller {
     }
     @DeleteMapping("/cars/{id}")
     public void deleteCar(@PathVariable("id") final Long id){
-        carsList.remove(id);
+        cars_service.delete_car(id);
     }
 }
