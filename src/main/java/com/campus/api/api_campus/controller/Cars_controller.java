@@ -13,13 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("cars")
+@RequestMapping("/cars")
 public class Cars_controller {
 
     @Autowired
     private Cars_service cars_service;
-    @Autowired
-    private CarsList_repository carsList_repository;
+
 //    @GetMapping("/cars")
 //    public Iterable<Cars>getCars(){
 //        return cars_service.getCars();
@@ -62,18 +61,18 @@ public class Cars_controller {
 //    }
     @GetMapping
     public List<Cars> getCars(){
-        return carsList_repository.CarsList_repository;
+        return (List<Cars>) cars_service.getCars();
     }
     @GetMapping("/{id}")
     public Cars getCarById(@PathVariable("id") Long id){
         Optional<Cars> car = cars_service.getCar(id);
         return car.orElse(null);
     }
-    @PostMapping("/cars")
+    @PostMapping
     public Cars createCar(@RequestBody Cars cars){
         return cars_service.save_cars(cars);
     }
-    @PutMapping("/cars/{id}")
+    @PutMapping("/{id}")
     public Cars updateCars(@PathVariable("id") Long id, @RequestBody Cars cars) {
         Optional<Cars> car = cars_service.getCar(id);
         if (car.isPresent()) {
@@ -88,7 +87,7 @@ public class Cars_controller {
             return null;
         }
     }
-    @DeleteMapping("/cars/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCar(@PathVariable("id") final Long id){
         cars_service.delete_car(id);
     }

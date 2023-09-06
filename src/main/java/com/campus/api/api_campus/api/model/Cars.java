@@ -5,7 +5,10 @@ import java.util.List;
 //package com.campus.api.api_campus.api.model;
 //
 import jakarta.persistence.*;
+import lombok.Getter;
+
 //
+@Getter
 @Entity
 //@Table(name= "Cars")
 public class Cars {
@@ -26,20 +29,8 @@ public class Cars {
         this.color = color;
     }
 
-    public int getId() {
-        return id;
-    }
+    public Cars() {
 
-    public String getModel() {
-        return Model;
-    }
-
-    public String getConstructor() {
-        return Constructor;
-    }
-
-    public String getColor() {
-        return color;
     }
 
     public void setId(int id) {
